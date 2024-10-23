@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "4c5a25e4-ebe6-4a40-b3a2-586736ed6031",
+		"name": "af test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "5092418"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/furniture",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"furniture"
+					],
+					"query": [
+						{
+							"key": "price_gt",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "price_lt",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "available",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/furniture/1"
+			},
+			"response": []
+		},
+		{
+			"name": "store",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Letters 2\",\n    \"description\": \"some description text\",\n    \"price\": 1.23,\n    \"quantity\": 5\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/furniture"
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Letters 123\",\n    \"description\": \"some description text\",\n    \"price\": 5,\n    \"quantity\": 6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/furniture/1"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Letters 2\",\n    \"description\": \"some description text\",\n    \"price\": 1,\n    \"quantity\": 32\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/furniture/2"
+			},
+			"response": []
+		}
+	]
+}

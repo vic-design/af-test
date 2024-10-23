@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFurnitureRequest;
 use App\Http\Requests\UpdateFurnitureRequest;
+use App\Http\Requests\FilterFurnitureRequest;
 use App\Models\Furniture;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class FurnitureController extends Controller
 {
@@ -14,9 +16,21 @@ class FurnitureController extends Controller
      *
      * @return JsonResponse
      */
-    public function index(): JsonResponse
+    public function index(FilterFurnitureRequest $request): JsonResponse
     {
-        return response()->json(Furniture::all());
+        $furniture = Furniture::query();        
+        if($request->get('available')) {
+            $furniture = $furniture->available();
+        }
+        $priceGT = $request->get('price_gt');
+        $priceLT = $request->get('price_lt');
+        if($priceGT) {
+            $furniture = $furniture->priceGT($priceGT);
+        }
+        if($priceLT) {
+            $furniture = $furniture->priceLT($priceLT);
+        }
+        return response()->json($furniture->get());
     }
 
     /**
