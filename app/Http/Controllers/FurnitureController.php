@@ -13,7 +13,8 @@ class FurnitureController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
+     * 
+     * @param FilterFurnitureRequest $request
      * @return JsonResponse
      */
     public function index(FilterFurnitureRequest $request): JsonResponse
